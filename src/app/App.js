@@ -1,24 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import SearchBar from 'features/search/SearchBar/SearchBar';
+import SearchResults from 'features/search/SearchResults/SearchResults';
+import useSearch from 'features/search/useSearch'
 
 function App() {
+  const {
+    fetchData,
+    busy,
+    data,
+    error
+  } = useSearch()
+  const hndSubmit = ({ query, country }) => fetchData(query, country)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>Universearch</h1>
       </header>
+      <SearchBar onSubmit={hndSubmit} disabled={busy} />
+      {busy ? (
+        <p>Loading...</p>
+      ) : error ? (
+          <p>Error! {error}</p>
+        ) : (
+          <SearchResults data={data} />
+        )
+      }
     </div>
   );
 }

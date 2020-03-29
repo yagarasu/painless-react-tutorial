@@ -1,0 +1,26 @@
+#results {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px;
+}
+
+#results li {
+  box-sizing: border-box;
+  text-align: left;
+  list-style: none;
+  background: #eee;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+#results li h2 {
+  margin: 0px;
+  margin-bottom: 0.5em;
+  font-size: 18px;
+}
+
+#results li a {
+  font-size: 14px;
+  margin-right: 1em;
+}
